@@ -1,0 +1,20 @@
+static:
+gcc -c main.c -o ../../bin/main.o
+gcc -c ../src/swap/swap.c -o ./static/swap.o
+
+ar rcs ./librevert_string.a ./swap.o ./revert_string.o
+
+gcc ../main.o -L./ -lrevert_string -o ../statically-linked
+
+./statically-linked abcd
+./statically-linked abcde
+
+shared:
+gcc -c -fPIC ../src/revert_string/revert_string.c -o ./shared/revert_string.o
+gcc -c -fPIC ../src/swap/swap.c -o ./shared/swap.o
+gcc -shared ./shared/swap.o ./shared/revert_string.o -o ./shared/librevert_string.so
+
+gcc ./main.o -L./shared -lrevert_string -o ./shared-library
+
+LD_LIBRARY_PATH=$(pwd)/shared ./shared-library abcd
+LD_LIBRARY_PATH=$(pwd)/shared ./shared-library abcde

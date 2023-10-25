@@ -1,0 +1,8 @@
+gcc -c main.c // скомпилировали main.c в main.o (объектный файл)
+gcc -c swap.c // скомпилировали swap.c d swap.o (объектный файл)
+
+gcc main.o swap.o -o result // объединили объектные файлы в один
+
+chmod u+rwx result // выдали все права
+
+./result // запустили

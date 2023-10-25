@@ -1,0 +1,10 @@
+gcc -c main.c
+gcc -c revert_string.c
+
+gcc main.o revert_string.o ../swap/swap.o -o result
+
+chmod u+rwx result
+
+./result abcd
+./result abcde
+  

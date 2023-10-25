@@ -23,4 +23,4 @@ LD_LIBRARY_PATH=$(pwd)/shared ./shared-library abcde
 sudo mv bin/shared/librevert_string.so /usr/lib 
 sudo chmod 755 /usr/lib/librevert_string.so
 
-gcc -o tests tests.c -lcunit -lrevert_string
+gcc -o tests tests.c -lcunit -lrevert_string -I../revert_string

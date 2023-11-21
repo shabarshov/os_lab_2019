@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <sys/time.h>
+#include <stdbool.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <limits.h>
@@ -11,12 +12,6 @@
 
 #include "find_min_max.h"
 #include "utils.h"
-
-typedef enum
-{
-   false,
-   true
-} bool;
 
 pid_t* ch_pid;
 int pnum;
@@ -186,13 +181,15 @@ int main(int argc, char **argv) {
   for(int i = 0; i < pnum; i++){
     wpid = waitpid(ch_pid[i], &status, 0);
     if (WIFEXITED(status)) {
-            counter += 1;
+      printf("\nChild process with PID %d successfully completed.", wpid);
+      counter += 1;
     } else if (WIFSIGNALED(status)) {
-            printf("Child process with PID %d terminated by signal %d.\n", wpid, WTERMSIG(status));
+      printf("\nChild process with PID %d terminated by signal %d.", wpid, WTERMSIG(status));
     } else {
-            printf("Child process with PID %d exited abnormally.\n", wpid);
+      printf("\nChild process with PID %d exited abnormally.", wpid);
     }
-  }  
+  }
+  printf("\n");
   
   if (counter == pnum){
      struct MinMax min_max;

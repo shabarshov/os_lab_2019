@@ -1,16 +1,23 @@
-gcc -c find_min_max.c
-gcc -c sequential_min_max.c
-gcc -c utils.c
+gcc find_min_max.c sequential_min_max.c utils.c -o ./task1
 
-gcc find_min_max.o sequential_min_max.o utils.o -o result
-gcc find_min_max.c sequential_min_max.c utils.c -o ./result (если хотим одной командой)
-
-./result 3 3
+src (master) $ ./task1 3 3
 1205554746 483147985 844158168 
 min: 483147985
-max: 120555474
-
-./result 3 5
-1205554746 483147985 844158168 953350440 612121425 
-min: 483147985
 max: 1205554746
+
+src (master) $ ./task1 3 6
+1205554746 483147985 844158168 953350440 612121425 310914940 
+min: 310914940
+max: 1205554746
+
+/////////////
+
+gcc find_min_max.c parallel_min_max.c utils.c -o ./task2
+./task2 --seed 3 --array_size 6 --pnum 2
+./task2 --seed 3 --array_size 6 --pnum 2 --by_files
+
+gcc find_min_max.c sequential_min_max.c utils.c -o ./task1 && gcc find_min_max.c parallel_min_max.c utils.c -o ./task2
+
+/////////////
+
+make all (собрать все) или просто make

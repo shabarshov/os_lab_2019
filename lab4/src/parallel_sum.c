@@ -107,7 +107,6 @@ int main(int argc, char **argv) {
           args[i].end = (i + 1) * array_size / threads_num;
           if(args[i].end > array_size) {
               printf ("%d %d\n", args[i].begin, args[i].end);
-              printf("SHIT!");
               return -1;
           }
       } else {

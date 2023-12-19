@@ -10,9 +10,9 @@ long long result = 1; // Результат факториала
 
 // Структура для передачи параметров в поток
 struct ThreadData {
-    int start;         // Число для вычисления факториала
-    int end;
-    int thread_id;     // Идентификатор потока
+    int start; // начало (с какого числа поток будет считать)
+    int end; // конец (до какого числа поток будет считать)
+    int thread_id; // Идентификатор потока
 };
 
 void partial_factorial(void *args) {

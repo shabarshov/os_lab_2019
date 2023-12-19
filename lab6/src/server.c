@@ -189,7 +189,6 @@ int main(int argc, char **argv) {
         uint64_t result = 0;
         pthread_join(threads[i], (void **)&result);
         printf("result = %lu\n", result);
-        // total = MultModulo(total, result, mod);
         total *= result;
       }
 
